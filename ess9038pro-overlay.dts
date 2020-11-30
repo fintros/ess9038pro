@@ -1,0 +1,24 @@
+// Definitions for Sabre ESS9038PRO
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2711";
+
+	fragment@0 {
+		target = <&i2c1>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+
+			i-sabre-codec@48 {
+				#sound-dai-cells = <0>;
+				compatible = "audiophonics,i-sabre-codec";
+				reg = <0x48>;
+                reset-gpio = <&gpio 22 GPIO_ACTIVE_LOW>;
+				status = "okay";
+			};
+		};
+	};
+};
